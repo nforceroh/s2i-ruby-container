@@ -18,10 +18,8 @@ USER root
 COPY ./s2i/bin/ /usr/libexec/s2i
 
 RUN set -x; \
-    dnf module list; \
-    dnf update -y --skip-broken --nobest && \
-    dnf clean all && \
-    gem install puma Rack Bundler jekyll --version "= $JEKYLL_VERSION"
+    gem install puma Rack Bundler \
+    gem install jekyll --version "= $JEKYLL_VERSION"
 
 USER 1001
 EXPOSE 8080
