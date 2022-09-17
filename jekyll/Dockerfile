@@ -18,6 +18,7 @@ USER root
 COPY ./s2i/bin/ /usr/libexec/s2i
 
 RUN set -x; \
+    chown +x /usr/libexec/s2i/* ; \
     gem install puma Rack Bundler ;\
     gem install jekyll --version "= $JEKYLL_VERSION"
 
